@@ -1,0 +1,54 @@
+header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    padding: 0 15px;
+}
+
+header h2 {
+    text-align: center;
+    color: #ff5200;
+    text-decoration: underline;
+}
+    
+header a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.9;
+}
+  
+header a:hover {
+    opacity: 1;
+}
+
+form {
+    width: 70%;
+}
+
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+body { margin: 30px; }
+.search {
+  position: relative;
+  color: #aaa;
+  font-size: 16px;
+}
+
+input {
+  width: 250px;
+  height: 32px;
+
+  background: #fcfcfc;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+}
+
+input { text-indent: 32px;}
+.fa-search { 
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
