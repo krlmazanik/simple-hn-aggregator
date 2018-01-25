@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ListNews from './ListNews';
 import Header from './Header';
+import LeftMenu from './LeftMenu';
 
 class App extends Component {
   constructor(props){
@@ -33,7 +34,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <ListNews stories={this.state.stories}/>
+        <div className="wrapper">
+          <LeftMenu />
+          <ListNews stories={this.state.stories}/>
+        </div>
       </div>
     );
   }
