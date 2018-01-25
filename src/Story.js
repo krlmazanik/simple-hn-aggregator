@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Story.css';
+import parse from 'url-parse';
+import timeAgo from 'epoch-timeago';
 
 class Story extends Component{
     constructor(props){
@@ -15,11 +17,10 @@ class Story extends Component{
             score,
             descendants
         } = this.props;
-        let regex = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/\n]+)/ig;
-        let domainName = '';
-        if (this.props.url) {
-            domainName = url.match(regex);
-        }
+
+        let domainName = parse(url),
+            {hostname} = domainName;
+        
 
         return (
           <div className='story-wrapper'>
@@ -28,14 +29,13 @@ class Story extends Component{
                 <p className='story-comments'>{descendants}</p>
             </div>
             <div className='story-item'>
-                <h2><a href={url} target='_blanc'>{domainName}</a></h2>
+                <h2><a href={url} target='_blanc'>{hostname.includes('www') ? hostname.substring(4) : hostname}</a></h2>
                 <p className='title-item'>{title}</p>
                 <p className='meta-data'>
-                    {time} by {author}
+                    {timeAgo(time*1000)} by {author}
                 </p>
             </div>
           </div>
-
     )
     }
 }

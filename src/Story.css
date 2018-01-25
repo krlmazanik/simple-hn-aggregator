@@ -1,6 +1,7 @@
 .story-wrapper {
     display: flex;
     flex-direction: row;
+    padding-left: 15px;
 }
 
 .story-item {
@@ -25,7 +26,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;  
-    width: 5%;
+    width: 25%;
 }
 
 .story-score, .story-comments{
