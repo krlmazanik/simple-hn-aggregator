@@ -8,7 +8,8 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      stories: []
+      stories: [],
+      indexCounter: 10
     }
   }
   
@@ -23,7 +24,7 @@ class App extends Component {
         return fetch(url).then(d => d.json());
       }))
       .then(data => data.filter((item, index) => {
-        if(index < 14) return data;
+        if(index < 10) return data;
       }))
       .then(promises => Promise.all(promises))
       .then(stories => this.setState({stories}));
@@ -37,7 +38,9 @@ class App extends Component {
         <div className="wrapper">
           <LeftMenu />
           <ListNews stories={this.state.stories}/>
+          
         </div>
+        <button>Load More</button>
       </div>
     );
   }

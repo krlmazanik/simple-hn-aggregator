@@ -15,7 +15,8 @@ class ListNews extends Component {
                         author={item.by} 
                         time={item.time}
                         descendants={item.descendants}
-                        score={item.score} />
+                        score={item.score}
+                         />
             
         ));
         

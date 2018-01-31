@@ -3,6 +3,9 @@ import './Story.css';
 import parse from 'url-parse';
 import timeAgo from 'epoch-timeago';
 
+import irate from './icons/thumb-up-icon.png';
+import icomments from './icons/comments-icon.png';
+
 class Story extends Component{
     constructor(props){
         super(props);
@@ -20,16 +23,17 @@ class Story extends Component{
 
         let domainName = parse(url),
             {hostname} = domainName;
-        
+            
+        hostname = hostname.includes('www') ? hostname.substring(4) : hostname;
 
         return (
           <div className='story-wrapper'>
             <div className='comment-score'>
-                <p className='story-score'>{score}</p>
-                <p className='story-comments'>{descendants}</p>
+                <p className='story-score'><img src={irate} />{score}</p>
+                <p className='story-comments'><img src={icomments} />{descendants}</p>
             </div>
             <div className='story-item'>
-                <h2><a href={url} target='_blanc'>{hostname.includes('www') ? hostname.substring(4) : hostname}</a></h2>
+                <h2><a href={url} target='_blanc'>{hostname}</a></h2>
                 <p className='title-item'>{title}</p>
                 <p className='meta-data'>
                     {timeAgo(time*1000)} by {author}
