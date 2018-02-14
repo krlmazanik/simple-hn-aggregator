@@ -23,32 +23,3 @@ header a {
 header a:hover {
     opacity: 1;
 }
-
-form {
-    width: 70%;
-}
-
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
-body { margin: 30px; }
-.search {
-  position: relative;
-  color: #aaa;
-  font-size: 16px;
-}
-
-input {
-  width: 250px;
-  height: 32px;
-
-  background: #fcfcfc;
-  border: 1px solid #aaa;
-  border-radius: 5px;
-  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
-}
-
-input { text-indent: 32px;}
-.fa-search { 
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}

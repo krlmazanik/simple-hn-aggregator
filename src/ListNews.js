@@ -3,9 +3,6 @@ import './ListNews';
 import Story from './Story';
 
 class ListNews extends Component {
-    constructor(props) {
-        super(props);
-    }
     render(){
         let {stories} = this.props;        
         let storyToShow = stories.map(item => (

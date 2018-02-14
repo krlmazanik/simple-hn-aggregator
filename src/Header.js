@@ -7,8 +7,11 @@ class Header extends Component {
             <header>
                 <h2><a href="#">HN</a></h2>
                 <div className='search'>
-                    <span className='fa fa-search' />
-                    <input type="text" />
+                    <select value={this.props.value}>
+                        <option value="topstories">Top Stories</option>
+                        <option value="newstories">New Stories</option>
+                        <option value="beststories">Best Stories</option>
+                    </select>
                 </div>
             </header>
         )
