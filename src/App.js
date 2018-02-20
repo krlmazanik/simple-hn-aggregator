@@ -76,7 +76,9 @@ class App extends Component {
           <LeftMenu />
           <div>
             <ListNews stories={this.state.stories}/>
-            <button className="load-btn" onClick={this.handleLoadMore}>Load More</button>
+            { this.state.stories.length > 0 && 
+              <button className="load-btn" onClick={this.handleLoadMore}>Load More</button>
+            }
           </div>
         </div>
       </div>
