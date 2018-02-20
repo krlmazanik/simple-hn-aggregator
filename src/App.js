@@ -21,7 +21,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-
     fetch(topStories) 
       .then(data => data.json())
       .then(storiesIDs => {
@@ -43,27 +42,29 @@ class App extends Component {
   hPush(array) {
     let stories = this.state.stories.slice();
 
-    Array.from(array).forEach(id => {
-      const url = `${storyUrlBase}${id}.json`;
+    Array.from(array).forEach( id => {
+      const url = `${ storyUrlBase }${ id }.json`;
       fetch(url)
       .then(res => res.json())
-      .then(item => stories.push(item));
+      .then(item => stories.push( item ))
+      .then(() => this.setState({ stories }))
       });
-
-      this.setState({stories});
   }
 
 
   handleLoadMore() {
+    console.log(this.state.indexCounter);
     this.setState(prevState => ({
       indexCounter: prevState.indexCounter + 5
-    }));
-    
+    }), ()=> {//);
+    console.log(this.state.indexCounter);
+
     let storiesReq = this.state.storiesIDs.filter((id, index) => {
       return index > this.state.indexCounter && index <= this.state.indexCounter + 5;
     });
 
     this.hPush(storiesReq);
+    });
   }
 
   render() {
@@ -73,9 +74,11 @@ class App extends Component {
         <Header />
         <div className="wrapper">
           <LeftMenu />
-          <ListNews stories={this.state.stories}/>
+          <div>
+            <ListNews stories={this.state.stories}/>
+            <button className="load-btn" onClick={this.handleLoadMore}>Load More</button>
+          </div>
         </div>
-        <button className="load-btn" onClick={this.handleLoadMore}>Load More</button>
       </div>
     );
   }
