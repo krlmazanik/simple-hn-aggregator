@@ -5,33 +5,41 @@ import Header from './Header';
 import LeftMenu from './LeftMenu';
 
 const storyUrlBase = 'https://hacker-news.firebaseio.com/v0/item/';
-const topStories = 'https://hacker-news.firebaseio.com/v0/topstories.json';
+const urlBase = 'https://hacker-news.firebaseio.com/v0/';
 
 class App extends Component {
-  constructor(props){
-    super(props);
+  constructor( props ){
+    super( props );
     this.state = {
       stories: [],
-      storiesIDs: [],
+      storiesIDs: [], 
       indexCounter: 5,
-      selectInput: 'topstories'
+      category: 'topstories'
     }
     this.handleLoadMore = this.handleLoadMore.bind(this);
     this.hPush = this.hPush.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 
   componentDidMount() {
-    fetch(topStories) 
-      .then(data => data.json())
-      .then(storiesIDs => {
-        this.setState({storiesIDs});
+    this.handleRequest(this.state.category);
+  }
+
+
+  handleRequest(cat) {
+    let url = `${urlBase}${cat}.json`;
+    
+    fetch( url ) 
+      .then( data => data.json() )
+      .then( storiesIDs => {
+        this.setState( { storiesIDs } );
         return this.state.storiesIDs;
       })
-      .then(data => data.filter((item, index) => {
+      .then(data => data.filter(( item, index ) => {
         return index < this.state.indexCounter;
       }))
       .then(data => data.map(id => {
-        const url = `${storyUrlBase}${id}.json`
+        const url = `${ storyUrlBase }${ id }.json`
         return fetch(url).then(d => d.json()) 
       }))
       .then(promises => Promise.all(promises))
@@ -56,7 +64,7 @@ class App extends Component {
     console.log(this.state.indexCounter);
     this.setState(prevState => ({
       indexCounter: prevState.indexCounter + 5
-    }), ()=> {//);
+    }), ()=> {
     console.log(this.state.indexCounter);
 
     let storiesReq = this.state.storiesIDs.filter((id, index) => {
@@ -67,11 +75,19 @@ class App extends Component {
     });
   }
 
+  handleSelectChange(e) {
+    this.setState({category: e.target.value, indexCounter: 5}, () => {
+      return this.handleRequest(this.state.category);
+    });
+  }
+
+
+
   render() {
 
     return (
       <div className="App">
-        <Header />
+        <Header category={this.state.category} handleSelectChange={this.handleSelectChange}/>
         <div className="wrapper">
           <LeftMenu />
           <div>

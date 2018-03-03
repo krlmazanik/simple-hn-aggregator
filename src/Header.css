@@ -23,3 +23,7 @@ header a {
 header a:hover {
     opacity: 1;
 }
+
+.select-input select {
+    width: 150px;
+}
