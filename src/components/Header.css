@@ -1,0 +1,29 @@
+header {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  padding: 0 15px;
+}
+
+header h2 {
+  text-align: center;
+  color: #ff5200;
+  text-decoration: underline;
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+header a:hover {
+  opacity: 1;
+}
+
+.select-input select {
+  width: 150px;
+}

@@ -1,0 +1,36 @@
+.story-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.story-item {
+  border-bottom: 1px solid lightgray;
+  font-size: 1.1em;
+}
+
+.title-item {
+  opacity: 0.8;
+}
+
+.meta-data {
+  opacity: 0.5;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(17, 16, 16);
+}
+
+.comment-score {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 135px;
+}
+
+/* .story-score, .story-comments{
+    color:black;
+    text-decoration:none;
+    padding-left:20px;
+} */
