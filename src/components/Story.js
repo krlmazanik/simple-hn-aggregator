@@ -19,12 +19,12 @@ class Story extends Component {
       <div className="story-wrapper">
         <div className="comment-score">
           <div className="story-score">
-            <img src={irate} />
+            <img src={irate} alt="thumb-up-icon" />
             <span>{score}</span>
           </div>
           <p className="story-comments">
-            <img src={icomments} />
-            {descendants}
+            <img src={icomments} alt="comments-icon" />
+            <span>{descendants}</span>
           </p>
         </div>
         <div className="story-item">

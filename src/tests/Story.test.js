@@ -45,7 +45,9 @@ describe("Story component", () => {
   it("renders score icon", () => {
     let actual = wrapper.find(".story-score");
 
-    expect(actual.contains(<img src="thumb-up-icon.png" />)).toBe(true);
+    expect(
+      actual.contains(<img src="thumb-up-icon.png" alt="thumb-up-icon" />)
+    ).toBe(true);
   });
 
   it("renders comments stat", () => {
@@ -58,7 +60,9 @@ describe("Story component", () => {
   it("renders comments icon", () => {
     let actual = wrapper.find(".story-comments");
 
-    expect(actual.contains(<img src="comments-icon.png" />)).toBe(true);
+    expect(
+      actual.contains(<img src="comments-icon.png" alt="comments-icon" />)
+    ).toBe(true);
   });
 
   it("renders relative time alonside with author", () => {
