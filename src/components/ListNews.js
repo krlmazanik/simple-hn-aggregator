@@ -10,7 +10,7 @@ class ListNews extends Component {
         key={item.id}
         url={item.url}
         title={item.title}
-        author={item.by}
+        by={item.by}
         time={item.time}
         descendants={item.descendants}
         score={item.score}

@@ -8,7 +8,7 @@ import icomments from "../icons/comments-icon.png";
 
 class Story extends Component {
   render() {
-    let { url, title, author, time, score, descendants } = this.props;
+    let { url, title, by, time, score, descendants } = this.props;
 
     let domainName = parse(url),
       { hostname } = domainName;
@@ -35,7 +35,7 @@ class Story extends Component {
           </h2>
           <p className="title-item">{title}</p>
           <p className="meta-data">
-            {timeAgo(time * 1000)} by {author}
+            {timeAgo(time * 1000)} by {by}
           </p>
         </div>
       </div>

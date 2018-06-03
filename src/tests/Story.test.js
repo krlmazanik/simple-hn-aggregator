@@ -1,19 +1,12 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Story from "../components/Story";
+import { data } from "../data/fixtures";
 
 import parse from "url-parse";
 import timeAgo from "epoch-timeago";
 
-const props = {
-  author: "ofrzeta",
-  descendants: 42,
-  score: 95,
-  time: 1527854280,
-  title: "Released and Certified: Qt Safe Renderer",
-  url:
-    "https://blog.qt.io/blog/2018/05/31/function-safety-certified-qt-safe-renderer/"
-};
+const props = data.stories[1];
 
 describe("Story component", () => {
   let wrapper = shallow(<Story {...props} />);
@@ -68,7 +61,7 @@ describe("Story component", () => {
   it("renders relative time alonside with author", () => {
     let actual = wrapper.find(".meta-data").text();
 
-    let expected = `${timeAgo(props.time * 1000)} by ${props.author}`;
+    let expected = `${timeAgo(props.time * 1000)} by ${props.by}`;
 
     expect(actual).toBe(expected);
   });
