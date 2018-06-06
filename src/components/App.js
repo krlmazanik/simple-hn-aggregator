@@ -16,8 +16,6 @@ class App extends Component {
       indexCounter: 5,
       category: "topstories"
     };
-    this.handleLoadMore = this.handleLoadMore.bind(this);
-    this.hPush = this.hPush.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
   }
 

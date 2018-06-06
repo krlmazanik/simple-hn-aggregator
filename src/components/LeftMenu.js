@@ -19,7 +19,7 @@ class LeftMenu extends Component {
       return (
         <li key={index}>
           <a href={item[1]} target="_blank">
-            <img src={item[2]} />
+            <img src={item[2]} alt={`${item[0]}-icon`} />
             {item[0]}
           </a>
         </li>

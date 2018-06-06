@@ -6,7 +6,7 @@ class Header extends Component {
     return (
       <header>
         <h2>
-          <a href="#">HN</a>
+          <a href={null}>HN</a>
         </h2>
         <div className="select-input">
           <select
