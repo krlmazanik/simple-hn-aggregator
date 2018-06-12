@@ -6,7 +6,10 @@
     "epoch-timeago": "^1.0.5",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.0.17",
+    "redux": "^4.0.0",
     "url-parse": "^1.2.0"
   },
   "scripts": {

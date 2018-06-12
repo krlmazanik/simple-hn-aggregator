@@ -4,6 +4,11 @@ import ListNews from "./ListNews";
 import Header from "./Header";
 import LeftMenu from "./LeftMenu";
 
+import { Switch, Route } from "react-router-dom";
+
+import { connect } from "react-redux";
+import { addStories } from "../actions";
+
 const storyUrlBase = "https://hacker-news.firebaseio.com/v0/item/";
 const urlBase = "https://hacker-news.firebaseio.com/v0/";
 
@@ -17,10 +22,12 @@ class App extends Component {
       category: "topstories"
     };
     this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleLoadMore = this.handleLoadMore.bind(this);
   }
 
   componentDidMount() {
     this.handleRequest(this.state.category);
+    console.log(this.props);
   }
 
   handleRequest(cat) {
@@ -44,7 +51,10 @@ class App extends Component {
         })
       )
       .then(promises => Promise.all(promises))
-      .then(stories => this.setState({ stories }))
+      // .then(stories => this.setState({ stories }))
+      .then(stories => {
+        return this.props.addStories(stories), this.setState({ stories });
+      })
       .catch(err => console.log(err));
   }
 
@@ -61,7 +71,6 @@ class App extends Component {
   }
 
   handleLoadMore() {
-    console.log(this.state.indexCounter);
     this.setState(
       prevState => ({
         indexCounter: prevState.indexCounter + 5
@@ -110,4 +119,14 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(reduxState) {
+  return {
+    stories: reduxState.stories
+  };
+}
+
+// export default App;
+export default connect(
+  mapStateToProps,
+  { addStories }
+)(App);
